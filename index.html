@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Dart - Projectile Trajectory</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/app.css" rel="stylesheet">
+	<script src="js/vue.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<div class="container py-3 py-sm-5" id="app">
+		<div class="row">
+			<div class="col-12 col-xl-6 mb-5 mb-xl-0">
+				<div class="draw-area border border-secondary bg-light" v-on:mouseDown.left="cursorPosition" v-on:mousemove="followCursorFunc" v-on:contextmenu="dartPosition" v-on:wheel.prevent="dartTwistChange">
+					<div class="dart point bg-danger border-top border-5 border-dark" v-bind:style="{ left: dartX+'px', top: dartY+'px', transform: 'rotate('+dartR+'deg)' }"></div>
+					<div class="cursor point bg-success" v-bind:style="{ left: cursorX+'px', top: cursorY+'px' }"></div>
+					<div class="trajectory-point bg-primary rounded-circle" v-for="point in dartTrajectory" v-bind:style="{ left: point.x+'px', top: point.y+'px' }"></div>
+					<div class="target point bg-primary rounded-circle border border-2 border-light" v-bind:style="{ left: targetX+'px', top: targetY+'px' }"></div>
+				</div>
+			</div>
+			<div class="col-12 col-xl-6">
+				<!-- DART -->
+				<h3 class="text-danger">Dart</h3>
+				<div class="row mb-4">
+					<div class="col">
+						<label class="form-label">X</label>
+						<input type="number" class="form-control" placeholder="X" v-model="dartX">
+					</div>
+					<div class="col">
+						<label class="form-label">Y</label>
+						<input type="number" class="form-control" placeholder="Y" v-model="dartY">
+					</div>
+				</div>
+				<!-- CURSOR -->
+				<h3 class="text-success">Cursor</h3>
+				<div class="row mb-4">
+					<div class="col">
+						<label class="form-label">X</label>
+						<input type="number" class="form-control" placeholder="X" v-model="cursorX">
+					</div>
+					<div class="col">
+						<label class="form-label">Y</label>
+						<input type="number" class="form-control" placeholder="Y" v-model="cursorY">
+					</div>
+				</div>
+				<!-- TARGET -->
+				<h3 class="text-primary">Target</h3>
+				<div class="row mb-4">
+					<div class="col">
+						<label class="form-label">Range</label>
+						<input type="number" class="form-control" placeholder="Range" v-model="dartRange">
+					</div>
+					<div class="col">
+						<label class="form-label">Twist</label>
+						<input type="number" class="form-control" placeholder="Twist" v-model="dartTwist">
+					</div>
+				</div>
+				<!-- FOLLOW CURSOR -->
+				<div class="form-check mb-4">
+					<input class="form-check-input" type="checkbox" id="follow-cursor" v-model="followCursor">
+					<label class="form-check-label" for="follow-cursor">Follow the cursor</label>
+				</div>
+				<!-- LEGEND -->
+				<h4 class="mb-3">Controls</h4>
+				<p><mark>LMB</mark> - set cursor position</p>
+				<p><mark>RMB</mark> - set dart position</p>
+				<p><mark>SCROLL</mark> - set twist value</p>
+				<!-- CREDITS -->
+				<p class="mt-4"><small>Created by <a href="mailto:mickrzyzak@gmail.com">mickrzyzak@gmail.com</a></small></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

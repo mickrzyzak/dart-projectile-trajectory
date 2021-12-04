@@ -1,0 +1,32 @@
+.draw-area {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  * {
+    pointer-events: none;
+  }
+  .point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    transform-origin: center;
+    &.target {
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+    }
+  }
+  .trajectory-point {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+  }
+  @media only screen and (max-width: 1200px) {
+    overflow: auto;
+  }
+}

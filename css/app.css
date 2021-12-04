@@ -1,0 +1,36 @@
+.draw-area {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.draw-area * {
+  pointer-events: none;
+}
+.draw-area .point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  transform-origin: center;
+}
+.draw-area .point.target {
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+}
+.draw-area .trajectory-point {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+@media only screen and (max-width: 1200px) {
+  .draw-area {
+    overflow: auto;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */
